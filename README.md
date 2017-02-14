@@ -9,14 +9,14 @@ To install MARLAU follow these steps:
 
 1. Download the zip file MARLAU.zip to a directory of your choice. The opt directory is recommended.
 
-2. Unzip the file:
-        unzip MARLAU.zip
-3. Edit your .bashrc file to add the MARLAU path to PATH.
-        Open a terminal Ctrl+Alt+T
-        cd
-        vim .bashrc or nano .bashrc or gedit .bashrc
-        add to the end of the filethe MARLAU path
-        PATH=$PATH:MARLAU_PATH
+2. Unzip the file:  
+        unzip MARLAU.zip  
+3. Edit your .bashrc file to add the MARLAU path to PATH.  
+        Open a terminal Ctrl+Alt+T  
+        cd  
+        vim .bashrc or nano .bashrc or gedit .bashrc  
+        add to the end of the filethe MARLAU path  
+        PATH=$PATH:MARLAU_PATH  
 
 PROGRAMS REQUIRED:
 ==================
@@ -39,11 +39,11 @@ PROGRAMS REQUIRED:
 USAGE:
 ======
 
-MARLAU *working_directory* *experiment* */home/opt/parameter_file_rnaseq.txt* */home/opt/parameter_file_chipseq.txt*  
+MARLAU "*working_directory*" "*experiment*" "*/home/opt/parameter_file_rnaseq.txt*" "*/home/opt/parameter_file_chipseq.txt*"  
 
 *working_directory* (opt directory recommended)  
 
-parameter_file_rnaseq.txt and parameter_file_chipseq.txt must be in the working_directory (opt directory recommended)  
+*parameter_file_rnaseq.txt* and *parameter_file_chipseq.txt* must be in the working_directory (opt directory recommended)  
 
 RNA-SEQ PARAMETER FILE STRUCTURE:
 ----------------------------------
