@@ -2,9 +2,9 @@
 Program to analyse CHIP-seq and RNA-seq data
 
 
-INSTALATION:
+INSTALLATION:
 
-To install MARLAu follow these steps:
+To install MARLAU follow these steps:
 
 1. Download the zip file MARLAU.zip to a directory of your choice. The opt directory is recommended.
 
