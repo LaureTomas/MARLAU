@@ -3,6 +3,7 @@ Program to analyse CHIP-seq and RNA-seq data
 
 
 INSTALLATION:
+=============
 
 To install MARLAU follow these steps:
 
@@ -18,6 +19,7 @@ To install MARLAU follow these steps:
         PATH=$PATH:MARLAU_PATH
 
 PROGRAMS REQUIRED:
+==================
 
 - Bowtie 2 version 2.2.6
 - TopHat v2.1.0
@@ -35,6 +37,7 @@ PROGRAMS REQUIRED:
 - R package "cummeRbund"
 
 USAGE:
+======
 
 MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>
 
