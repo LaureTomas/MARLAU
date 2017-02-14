@@ -39,12 +39,14 @@ PROGRAMS REQUIRED:
 USAGE:
 ======
 
-MARLAU "<working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>"
+MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>
 
 working_directory (opt directory recommended)
 
+parameter_file_rnaseq.txt and parameter_file_chipseq.txt must be in the working_directory (opt directory recommended)
+
 RNA-SEQ PARAMETER FILE STRUCTURE:
-___________________________________________________________
+----------------------------------
 working_directory: /PATH/TO/WORKING/DIRECTORY (WORKING/DIR_MARLAU/EXPERIMENT_MARLAU)   
 experiment: EXPERIMENT_NAME  
 number_of_samples: #  
@@ -59,7 +61,7 @@ threshold: # (fold-change value)
 pvalue: #
 
 CHIP-SEQ PARAMETER FILE STRUCTURE:
-___________________________________________________________
+-----------------------------------
 working_directory: /PATH/TO/WORKING/DIRECTORY (WORKING/DIR_MARLAU/EXPERIMENT_MARLAU)
 experiment: EXPERIMENT_NAME
 experimental_design: 1,1,2,1 (Nº CHIP cond 1, Nº INPUT cond 1, Nº CHIP cond 2, Nº INPUT cond 2)
