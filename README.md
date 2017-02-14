@@ -39,7 +39,7 @@ PROGRAMS REQUIRED:
 USAGE:
 ======
 
-MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>
+MARLAU "<working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>"
 
 working_directory (opt directory recommended)
 
