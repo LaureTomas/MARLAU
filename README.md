@@ -43,7 +43,7 @@ MARLAU "*working_directory*" "*experiment*" "*/home/opt/parameter_file_rnaseq.tx
 
 *working_directory* (opt directory recommended)  
 
-*parameter_file_rnaseq.txt* and *parameter_file_chipseq.txt* must be in the working_directory (opt directory recommended)  
+*parameter_file_rnaseq.txt* and *parameter_file_chipseq.txt* must be in the *working_directory* (opt directory recommended)  
 
 RNA-SEQ PARAMETER FILE STRUCTURE:
 ----------------------------------
