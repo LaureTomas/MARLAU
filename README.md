@@ -38,12 +38,33 @@ USAGE:
 
 MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>
 
+working_directory (opt directory recommended)
+
+RNA-SEQ PARAMETER FILE STRUCTURE:
+################################################################
+working_directory: /PATH/TO/WORKING/DIRECTORY (WORKING/DIR_MARLAU/EXPERIMENT_MARLAU)
+experiment: EXPERIMENT_NAME
+number_of_samples: #
+url_genome: 
+url_annotation: 
+url_sample_1: 
+url_sample_X:
+labels: con1,cond2,cond3
+experimental_design: 2,2,3 (Nº of samples of each condition)
+comparisons: 1,2,1,3,2,3 (cond1-cond2, cond1-cond3, cond2-cond3)
+threshold: # (fold-change value)
+pvalue: #
+
 CHIP-SEQ PARAMETER FILE STRUCTURE:
 ################################################################
-working_directory: /PATH/TO/WORKING/DIRECTORY (opt directory recommended)
+working_directory: /PATH/TO/WORKING/DIRECTORY (WORKING/DIR_MARLAU/EXPERIMENT_MARLAU)
 experiment: EXPERIMENT_NAME
 experimental_design: 1,1,2,1 (Nº CHIP cond 1, Nº INPUT cond 1, Nº CHIP cond 2, Nº INPUT cond 2)
 url_genome: 
 url_annotation: 
 experiment_type: TF (TF for transcription factor or EP for epigenetics marks)
-
+targets_threshold: # (threshold for NDG targets)
+url_chip1: 
+url_chipX:
+url_input1:
+url_inputX:
