@@ -1,0 +1,353 @@
+#! /bin/bash
+
+## Copyright 2016 Manuel Cantero, Maria Roman and Laureano Tomas
+
+## This file is part of MARLAU
+
+## MARLAU is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## MARLAU is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with MARLAU.  If not, see <http://www.gnu.org/licenses/>.
+
+if [ $# -eq 0 ]
+then
+   echo "Usage: MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>"
+   echo "Do you want to creat a parameter_file_rnaseq.txt? Type 0 for yes 1 for no"
+   read RES_1
+   if [ $RES_1 -eq 0 ]
+   then
+   	  echo "Experiment Working Directory:"
+      read WORKING_DIR
+      echo "Experiment name (rnaseq recommended):"
+      read EXPERIMENT
+	  echo "Number of samples:"
+	  read NUMBER_OF_SAMPLES
+      echo "Genome URL:"
+  	  read URL_GENOME
+	  echo "Annotation URL:"
+	  read URL_ANNOTATION
+	  echo "Labels:"
+	  read LABELS
+	  echo "Experiment design"
+	  read EXP_DESIGN
+	  echo "Comparisons"
+	  read COMPARISONS
+	  echo "threshold"
+	  read THRESHOLD
+	  echo "pvalue"
+	  read PV
+
+	 	echo "working_directory: $WORKING_DIR" > $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+	 	echo "experiment: $EXPERIMENT" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+	 	echo "number of samples: $NUMBER_OF_SAMPLES" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt 
+	 	echo "url_genome: $URL_GENOME" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt 
+	 	echo "url_annotation: $URL_ANNOTATION" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt  
+	 	echo "labels: $LABELS" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt 
+	 	echo "experimental design: $EXP_DESIGN" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+	 	echo "comparisons: $COMPARISONS" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+	 	echo "threshold: $THRESHOLD" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+	 	echo "pvalue: $PV" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+ 	 	i=1
+	 	while [ $i -le $NUMBER_OF_SAMPLES ]
+      do
+      	echo "Sample $i URL"
+        	read URL_SAMPLE
+         echo "url_sample_$i: $URL_SAMPLE" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_rnaseq.txt
+         ((i++))
+      done
+
+		echo "The parameter file has been created."
+   else
+      exit
+   fi 
+   echo "Do you want to creat a parameter_file_chipseq.txt? Type 0 for yes 1 for no"
+   read RES_2
+   if [ $RES_2 -eq 0 ]
+   then
+   	echo "Experiment Working Directory:"
+      read WORKING_DIR
+      echo "Experiment name (chipseq recommended):"
+      read EXPERIMENT
+      echo "Experiment design"
+	 	read EXP_DESIGN
+      echo "Genome URL:"
+  	 	read URL_GENOME
+	 	echo "Annotation URL:"
+	 	read URL_ANNOTATION
+	 	echo "Experiment Type:"
+	 	read EXPERIMENT_TYPE
+	 	echo "threshold"
+	 	read THRESHOLD
+	 	echo "Number of chip samples"                                                                                                                                             
+      	read NUMBER_OF_CHIP_SAMLES                                                                                                                                                
+      	i=1                                                                                                                                                                       
+      	while [ $i -le $NUMBER_OF_CHIP_SAMPLES ]                                                                                                                                  
+     	do                                                                                                                                                                        
+        	echo "Chip sample $i URL"                                                                                                                                               
+        	read URL_CHIP                                                                                                                                                           
+        	echo "url_chip${i}: $URL_CHIP" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt                                                                                             
+        	((i++))                                                                                                                                                                 
+        done                                                                                                                                                                      
+      	echo "Number of input samples. Type 0 if there's no input samples."                                                                                                       
+      	read NUMBER_OF_INPUT_SAMPLES                                                                                                                                              
+      	if [ $NUMBER_OF_INPUT_SAMPLES -ne 0 ]                                                                                                                                     
+      	then                                                                                                                                                                      
+        	j=1                                                                                                                                                                    
+        	while [ $j -le $NUMBER_OF_INPUT_SAMPLES ]                                                                                                                              
+         	do                                                                                                                                                                     
+            	echo "Input sample $j URL"                                                                                                                                          
+            	read URL_INPUT                                                                                                                                                      
+            	echo "url_input${j}: $URL_INPUT" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt                                                                                
+            	((j++))                                                                                                                                                             
+         	done         
+        fi
+		echo "working_directory: $WORKING_DIR" > $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+	 	echo "experiment: $EXPERIMENT" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+		echo "experimental design: $EXP_DESIGN" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+	 	echo "url_genome: $URL_GENOME" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+	 	echo "url_annotation: $URL_ANNOTATION" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+	 	echo "experiment_type: $EXPERIMENT_TYPE" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+	 	echo "targets_threshold: $THRESHOLD" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
+
+	 	echo "The parameter file has been created."
+   else
+      exit
+   fi 
+fi
+
+## Reading parameters
+
+WORKING_DIR=$1
+EXPERIMENT=$2
+PARAM_FILE_RNASEQ=$3
+PARAM_FILE_CHIPSEQ=$4
+
+## Creating working directory
+
+cd $WORKING_DIR
+
+mkdir $EXPERIMENT
+
+cd $EXPERIMENT
+
+echo "working_directory:" $WORKING_DIR > logs.txt
+echo "experiment_name:" $EXPERIMENT >> logs.txt
+
+## Parallel processing of RNA-seq and CHIP-seq
+
+## RNASEQ
+
+WORKING_DIR_RNASEQ=$( grep working_directory: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+EXPERIMENT_RNASEQ=$( grep experiment: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+NUMBER_OF_SAMPLES=$( grep number_of_samples: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+URL_GENOME_RNASEQ=$( grep url_genome: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+URL_ANNOTATION_RNASEQ=$( grep url_annotation: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+LABELS=$( grep labels: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+EXP_DESIGN_RNASEQ=$( grep experimental_design: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+COMPARISONS=$( grep comparisons: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+THRESHOLD_RNASEQ=$( grep threshold: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+PV=$( grep pvalue: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+
+## Making the experiment directory
+
+cd $WORKING_DIR_RNASEQ
+mkdir $EXPERIMENT_RNASEQ
+
+cd $EXPERIMENT_RNASEQ
+
+echo "working_directory:" $WORKING_DIR_RNASEQ > logs_rnaseq.txt
+echo "experiment_name:" $EXPERIMENT_RNASEQ >> logs_rnaseq.txt
+echo "number_of_samples:" $NUMBER_OF_SAMPLES >> logs_rnaseq.txt
+echo "url_genome:" $URL_GENOME_RNASEQ >> logs_rnaseq.txt
+echo "url_annotation:" $URL_ANNOTATION_RNASEQ >> logs_rnaseq.txt
+echo "labels:" $LABELS >> logs_rnaseq.txt
+echo "experimental_design:" $EXP_DESIGN_RNASEQ >> logs_rnaseq.txt
+echo "comparisons:" $COMPARISONS >> logs_rnaseq.txt
+echo "threshold:" $THRESHOLD_RNASEQ >> logs_rnaseq.txt
+echo "pvalue:" $PV >> logs_rnaseq.txt
+
+## Making the directory structure
+
+echo "Creating working directory structure"
+echo "Creating working directory structure" >> $WORKING_DIR_RNASEQ/$EXPERIMENT_RNASEQ/logs_rnaseq.txt
+
+$HOME/opt/MARLAU/directory_structure_rnaseq.sh $WORKING_DIR_RNASEQ $EXPERIMENT_RNASEQ $NUMBER_OF_SAMPLES $URL_GENOME_RNASEQ $URL_ANNOTATION_RNASEQ
+
+##Parallel processing of samples
+
+i=1
+while [ $i -le $NUMBER_OF_SAMPLES ]
+do
+   echo "Reading url_sample_"$i
+   echo "Reading url_sample_"$i >> $WORKING_DIR_RNASEQ/$EXPERIMENT_RNASEQ/logs_rnaseq.txt
+   cd $WORKING_DIR
+   URL_SAMPLE=$( grep url_sample_$i: $PARAM_FILE_RNASEQ | awk '{print $2}' )
+   echo "Sample_"$i "read"
+   echo "Sample_"$i "read" >> $WORKING_DIR_RNASEQ/$EXPERIMENT_RNASEQ/logs_rnaseq.txt
+   cd $WORKING_DIR_RNASEQ/$EXPERIMENT_RNASEQ/samples/sample_$i
+   qsub -N sample_${i}_rnaseq -o log_sample_$i $HOME/opt/MARLAU/samples_processing_rnaseq.sh $WORKING_DIR_RNASEQ $EXPERIMENT_RNASEQ $i $URL_SAMPLE $NUMBER_OF_SAMPLES $LABELS $EXP_DESIGN_RNASEQ $COMPARISONS $THRESHOLD_RNASEQ $PV
+   ((i++))
+   sleep 2m
+done
+
+###################################
+
+## CHIPSEQ
+
+WORKING_DIR_CHIPSEQ=$( grep working_directory: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+EXPERIMENT_CHIPSEQ=$( grep experiment: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+EXP_DESIGN_CHIPSEQ=$( grep experimental_design: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+URL_GENOME_CHIPSEQ=$( grep url_genome: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+URL_ANNOTATION_CHIPSEQ=$( grep url_annotation: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+EXPERIMENT_TYPE=$( grep experiment_type: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+THRESHOLD_CHIPSEQ=$( grep targets_threshold: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+
+## Making the experiment directory
+
+cd $WORKING_DIR_CHIPSEQ
+mkdir $EXPERIMENT_CHIPSEQ
+
+cd $EXPERIMENT_CHIPSEQ
+
+echo "working_directory:" $WORKING_DIR_CHIPSEQ > logs_chipseq.txt
+echo "experiment_name:" $EXPERIMENT_CHIPSEQ >> logs_chipseq.txt
+echo "experimental_design:" $EXP_DESIGN_CHIPSEQ >> logs_chipseq.txt
+echo "url_genome:" $URL_GENOME_CHIPSEQ >> logs_chipseq.txt
+echo "url_annotation:" $URL_ANNOTATION_CHIPSEQ >> logs_chipseq.txt
+echo "experiment_type:" $EXPERIMENT_TYPE >> logs_chipseq.txt
+echo "threshold:" $THRESHOLD_CHIPSEQ >> logs_chipseq.txt
+
+## Making the directory structure
+
+echo "Creating working directory structure"
+echo "Creating working directory structure" >> $WORKING_DIR_CHIPSEQ/$EXPERIMENT_CHIPSEQ/logs_chipseq.txt
+
+$HOME/opt/MARLAU/directory_structure_chipseq.sh $WORKING_DIR_CHIPSEQ $EXPERIMENT_CHIPSEQ $URL_GENOME_CHIPSEQ $URL_ANNOTATION_CHIPSEQ
+
+## Parallel processing of samples
+#################################
+
+## Split Experimental Design into an array. Transforming ',' into ''.
+
+IFS=',' read -ra ARRAY_EXP <<< "$EXP_DESIGN_CHIPSEQ"
+
+echo "array_experiment:" ${ARRAY_EXP[*]} >> $WORKING_DIR_CHIPSEQ/$EXPERIMENT_CHIPSEQ/logs_chipseq.txt
+
+## Calculating the number of samples using a for loop that sums all the positions of the array
+
+NUMBER_SAMPLES=0
+
+for i in "${ARRAY_EXP[@]}"
+do
+   NUMBER_SAMPLES=$((${NUMBER_SAMPLES}+${i}))
+done
+
+## Initializing parameters:
+##   i: number of samples
+##   jj: the number asociated with the chips
+##   kk: the number associated with the inputs
+##   ARRAY_ELEMENT: each element of ARRAY_EXP
+
+i=1
+jj=1
+kk=1
+ARRAY_ELEMENT=0
+
+## Setting directory where PARAR_FILE is
+
+cd ..
+
+## While loop to submit each sample with its name and number, according to the type of sample
+
+while [ $i -le $NUMBER_SAMPLES ]
+do
+
+## Initializing j and k parameters each turn of the loop
+## j: number of chip
+## k: number of input
+
+j=1
+k=1
+
+## If the array element is divisible by 2, it means that this element contents the chip's samples
+
+   if [ $(($ARRAY_ELEMENT%2)) -eq 0 ]
+   then
+
+## while j is less or equal to the number of chips in this position of the array
+
+      while [ $j -le ${ARRAY_EXP[$ARRAY_ELEMENT]} ]
+      do
+
+## Extract the URL of the sample from the PARAMA_FILE and 
+## submit samples_processing.sh to the queue with the name chip and the number jj
+## The input parameters to this script are: WORKING_DIR, EXPERIMENT, URL, type of sample, name of sample and the ARRAY_EXP
+         cd $WORKING_DIR
+         URL=$( grep url_chip$jj: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+         cd $WORKING_DIR_CHIPSEQ/$EXPERIMENT_CHIPSEQ/samples/chip
+         qsub -N chip${jj}_sample -o log_chip${jj}_sample $HOME/opt/MARLAU/samples_processing_chipseq.sh $WORKING_DIR_CHIPSEQ $EXPERIMENT_CHIPSEQ $URL "chip" "chip_"${jj} $EXP_DESIGN_CHIPSEQ $EXPERIMENT_TYPE $THRESHOLD_CHIPSEQ
+         sleep 2m 
+## Update j, jj and i parameters
+
+         ((j++))
+         ((jj++))
+         ((i++))
+      done
+
+## when this while loop finishes the j parameter starts again in 1
+## the jj parameter does not start again in 1 in order to associate a different number to each chip
+
+## If the array element is not divisible by 2, it means that this element contents the input's samples
+
+   elif [ $(($ARRAY_ELEMENT%2)) -ne 0 ]
+   then
+
+## while k is less or equal to the number of inputs in this position of the array
+
+      while [ $k -le ${ARRAY_EXP[$ARRAY_ELEMENT]} ]
+      do
+
+## Extract the URL of the sample from the PARAMA_FILE and 
+## submit samples_processing.sh to the queue with the name input and the number kk
+## The input parameters to this script are: WORKING_DIR, EXPERIMENT, URL, type of sample, name of sample and the ARRAY_EXP
+		 cd $WORKING_DIR
+         URL=$( grep url_input${kk}: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
+         cd $WORKING_DIR_CHIPSEQ/$EXPERIMENT_CHIPSEQ/samples/input
+         qsub -N input${kk}_sample -o log_input${kk}_sample $HOME/opt/MARLAU/samples_processing_chipseq.sh $WORKING_DIR_CHIPSEQ $EXPERIMENT_CHIPSEQ $URL "input" "input_"${kk} $EXP_DESIGN_CHIPSEQ $EXPERIMENT_TYPE $THRESHOLD_CHIPSEQ
+
+## Update k, kk and i parameters
+
+         ((k++))
+         ((kk++))
+         ((i++))
+      done
+
+## when this while loop finishes the k paramter starts again in 1
+## the kk parameter does not start again in 1 in order to associate a different number to each input
+
+   fi
+
+## Update ARRAY_ELEMENT
+
+   ((ARRAY_ELEMENT++))
+done
+
+###################################
+
+cd $WORKING_DIR/$EXPERIMENT
+
+echo "rna_working_dir: $WORKING_DIR_RNASEQ/$EXPERIMENT_RNASEQ/results/DEGs/" > sync_file.txt
+echo "chip_working_dir: $WORKING_DIR_CHIPSEQ/$EXPERIMENT_CHIPSEQ/results/" >> sync_file.txt
+echo "working_dir: $WORKING_DIR/$EXPERIMENT" >> sync_file.txt
+echo -n "ID: " >> sync_file.txt
+
+echo "MARLAU DONE"
+echo "MARLAU DONE" >> $WORKING_DIR/$EXPERIMENT/logs.txt
