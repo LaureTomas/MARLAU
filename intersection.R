@@ -44,4 +44,30 @@ genes.1.2 <- unique(genes.1.2)
 
 setwd(directory)
 
-write.table(genes.1.2, "_degs.txt")
+file3.name <- paste("degs_",id,"targets.txt", sep = "")
+
+write.table(genes.1.2, file3.name)
+
+library(VennDiagram)
+
+label.1.name <- paste(id,"_targets", sep = "")
+
+label.1 <- label.1.name
+label.2 <- "degs"
+
+venn.name <- paste("venn",label.1.name,"_degs.png", sep = "")
+
+grid.newpage()
+venn <- draw.pairwise.venn(area1 = length(unique(genes.1)),
+                   area2 = length(unique(genes.2)),
+                   cross.area = length(unique(genes.1.2)),
+                   category = c(label.1, label.2), 
+                   cat.cex=3, cat.pos=c(-30,20), cat.dist=0.04, cex=2,
+                   fill=c("green", "red"),
+                   alpha=c(0.4,0.4),
+                   lwd=3,fontface="bold",
+                   cat.fontface="bold")
+
+png(filename= venn.name, res=72)
+venn
+dev.off()
