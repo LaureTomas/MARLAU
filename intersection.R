@@ -44,7 +44,7 @@ genes.1.2 <- unique(genes.1.2)
 
 setwd(directory)
 
-file3.name <- paste("degs_",id,"targets.txt", sep = "")
+file3.name <- paste("degs_",id,"_targets.txt", sep = "")
 
 write.table(genes.1.2, file3.name)
 
