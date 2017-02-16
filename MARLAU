@@ -65,8 +65,7 @@ then
       done
 
 		echo "The parameter file has been created."
-   else
-      exit
+
    fi 
    echo "Do you want to creat a parameter_file_chipseq.txt? Type 0 for yes 1 for no"
    read RES_2
@@ -118,8 +117,7 @@ then
 	 	echo "targets_threshold: $THRESHOLD" >> $WORKING_DIR/parameter_file_${EXPERIMENT}_chipseq.txt
 
 	 	echo "The parameter file has been created."
-   else
-      exit
+
    fi 
 fi
 
