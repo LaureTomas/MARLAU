@@ -34,10 +34,6 @@ INPUT_NAME=$7
 
 ## Accessing the results directory
 
-mkdir $ID
-
-cd $WORKING_DIR/$EXPERIMENT/results/$ID
-
 echo "Peaks calling" >> $WORKING_DIR/$EXPERIMENT/logs_chipseq.txt
 
 ## If there is not any input
@@ -48,6 +44,8 @@ then
 ## Peak calling
 
    ID=${CHIP_NAME}
+   mkdir $ID
+   cd $WORKING_DIR/$EXPERIMENT/results/$ID
    macs2 callpeak -t $WORKING_DIR/$EXPERIMENT/samples/chip/$CHIP_NAME.sam -n $ID --outdir . -f SAM
    echo -n "$ID," >> $WORKING_DIR/sync_file.txt
 else
@@ -56,6 +54,8 @@ else
 ## Peak calling
 
    ID=${CHIP_NAME}"_"${INPUT_NAME}
+   mkdir $ID
+   cd $WORKING_DIR/$EXPERIMENT/results/$ID
    macs2 callpeak -t $WORKING_DIR/$EXPERIMENT/samples/chip/$CHIP_NAME.sam -c $WORKING_DIR/$EXPERIMENT/samples/input/$INPUT_NAME.sam -n $ID --outdir . -f SAM
    echo -n "$ID," >> $WORKING_DIR/sync_file.txt
 fi
