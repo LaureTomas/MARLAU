@@ -89,7 +89,7 @@ DONE_SAMPLES=$( wc -l $WORKING_DIR/$EXPERIMENT/blackboard_rnaseq.txt | awk '{ pr
 if [ $DONE_SAMPLES -eq $NUMBER_OF_SAMPLES ]
 then
    cd $WORKING_DIR/$EXPERIMENT/results
-   qsub -N merge_diff -o merge_diff $HOME/opt/MARLAU/merge_diff.sh $WORKING_DIR $EXPERIMENT $NUMBER_OF_SAMPLES $LABELS $EXP_DESIGN $COMPARISONS $THRESHOLD $PV
+   qsub -N merge_diff -o log_merge_diff $HOME/opt/MARLAU/merge_diff.sh $WORKING_DIR $EXPERIMENT $NUMBER_OF_SAMPLES $LABELS $EXP_DESIGN $COMPARISONS $THRESHOLD $PV
 fi
 
 echo "SAMPLE" $i "PROCESSING DONE"
