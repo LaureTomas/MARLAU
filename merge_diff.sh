@@ -56,8 +56,6 @@ cuffmerge -g $WORKING_DIR/$EXPERIMENT/annotation/annotation.gtf -s $WORKING_DIR/
 
 ## Split experimental design into an array. Transforming ',' into ''.
 
-## Sustituir ARRAY_EXP=$( echo $EXP_DESIGN | tr ',' '\n' ) por IFS=',' read -ra ARRAY_EXP <<< "$EXP_DESIGN"
-
 echo "Split experimental desing into ARRAY_EXP" >> $WORKING_DIR/$EXPERIMENT/logs_rnaseq.txt
 
 IFS=',' read -ra ARRAY_EXP <<< "$EXP_DESIGN"
