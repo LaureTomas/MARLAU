@@ -332,7 +332,7 @@ k=1
          ((i++))
       done
 
-## when this while loop finishes the k paramter starts again in 1
+## when this while loop finishes the k parameter starts again in 1
 ## the kk parameter does not start again in 1 in order to associate a different number to each input
 
    fi
