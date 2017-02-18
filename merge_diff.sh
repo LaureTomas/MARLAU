@@ -3,7 +3,7 @@
 #$ -cwd
 #$ -j yes
 
-## Copyright 2016 Manuel Cantero, Maria Roman and Laureano Tomas
+## Copyright 2016 Maria Roman and Laureano Tomas
 
 ## This file is part of MARLAU
 
