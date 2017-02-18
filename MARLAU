@@ -143,6 +143,8 @@ echo "experiment_name:" $EXPERIMENT >> logs.txt
 
 ## RNASEQ
 
+cd $WORKING_DIR
+
 WORKING_DIR_RNASEQ=$( grep working_directory: $PARAM_FILE_RNASEQ | awk '{print $2}' )
 EXPERIMENT_RNASEQ=$( grep experiment: $PARAM_FILE_RNASEQ | awk '{print $2}' )
 NUMBER_OF_SAMPLES=$( grep number_of_samples: $PARAM_FILE_RNASEQ | awk '{print $2}' )
@@ -199,6 +201,8 @@ done
 ###################################
 
 ## CHIPSEQ
+
+cd $WORKING_DIR
 
 WORKING_DIR_CHIPSEQ=$( grep working_directory: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
 EXPERIMENT_CHIPSEQ=$( grep experiment: $PARAM_FILE_CHIPSEQ | awk '{print $2}' )
