@@ -178,8 +178,7 @@ else if (th == 0 && pv != 0)
 
 else if (th != 0 && pv != 0)
 {
-  th.log <- log2(2)
-pv <- 0.05
+  th.log <- log2(th)
 
   degs <- vector(mode = "character")
 
