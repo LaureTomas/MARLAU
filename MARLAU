@@ -20,7 +20,7 @@
 if [ $# -eq 0 ]
 then
    echo "Usage: MARLAU <working_directory> <experiment> </home/opt/parameter_file_rnaseq.txt> </home/opt/parameter_file_chipseq.txt>"
-   echo "Do you want to creat a parameter_file_rnaseq.txt? Type 0 for yes 1 for no"
+   echo "Do you want to create a parameter_file_rnaseq.txt? Type 0 for yes 1 for no"
    read RES_1
    if [ $RES_1 -eq 0 ]
    then
@@ -67,7 +67,7 @@ then
 		echo "The parameter file has been created."
 
    fi 
-   echo "Do you want to creat a parameter_file_chipseq.txt? Type 0 for yes 1 for no"
+   echo "Do you want to create a parameter_file_chipseq.txt? Type 0 for yes 1 for no"
    read RES_2
    if [ $RES_2 -eq 0 ]
    then
