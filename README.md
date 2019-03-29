@@ -1,6 +1,8 @@
 # MARLAU
 Program to analyse CHIP-seq and RNA-seq data
 
+This program is the final proyect of Bioinformatics and Genomics Analysis subject of the 4th year in the Biochemistry Degree at University of Seville.
+
 
 INSTALLATION:
 =============
